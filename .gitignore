@@ -1,0 +1,28 @@
+# Eclipse
+.project
+.cproject
+.settings/
+.metadata/
+
+# Build artifacts
+Debug_FLASH/*
+build/
+output/
+*.bin
+*.hex
+*.elf
+*.map
+*.o
+*.d
+*.axf
+*.lst
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db

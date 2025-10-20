@@ -1,0 +1,850 @@
+/**
+ * @file fc7xxx_driver_trgsel.h
+ * @author Flagchip0103
+ * @brief FC7xxx TRGSEL driver header file
+ * @version 0.1.0
+ * @date 2023-12-19
+ *
+ * @copyright Copyright (c) 2023 Flagchip Semiconductors Co., Ltd.
+ *
+ */
+/* ********************************************************************************
+   *   Revision History:
+   *
+   *   Version     Date          Initials      CR#          Descriptions
+   *   ---------   ----------    ------------  ----------   ---------------
+   *   0.1.0      2023-12-19    Flagchip0103   N/A          First version for FC7240
+   ******************************************************************************** */
+
+#ifndef _DRIVER_FC7XXX_DRIVER_TRGSEL_H_
+#define _DRIVER_FC7XXX_DRIVER_TRGSEL_H_
+#include "device_header.h"
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
+/**
+ * @addtogroup fc4xxx_driver_trgsel
+ * @{
+ */
+
+/**
+ * @brief TrgSel trigger targets
+ *
+ */
+typedef uint32_t TRGSEL_TargetType;
+
+/**
+ * @brief TrgSel trigger sources
+ *
+ */
+typedef uint32_t TRGSEL_SourceType;
+
+/**
+ * @brief The TrgSel eInstance to select
+ *
+ */
+typedef enum
+{
+    TRGSEL_INSTANCE_0 = 0U,
+    TRGSEL_INSTANCE_1 = 1U,
+    TRGSEL_INSTANCE_2 = 2U,
+    TRGSEL_INSTANCE_3 = 3U,
+    TRGSEL_INSTANCE_4 = 4U,
+    TRGSEL_INSTANCE_5 = 5U,
+} TRGSEL_InstanceType;
+
+/**
+ * @brief TrgSel instance 0 trigger targets
+ *
+ */
+typedef enum
+{
+    TRGSEL0_TARGET_LU0_INPUT0A    = 0U,
+    TRGSEL0_TARGET_LU0_INPUT0B    = 1U,
+    TRGSEL0_TARGET_LU0_INPUT0C    = 2U,
+    TRGSEL0_TARGET_LU0_INPUT0D    = 3U,
+    TRGSEL0_TARGET_LU0_INPUT1A    = 4U,
+    TRGSEL0_TARGET_LU0_INPUT1B    = 5U,
+    TRGSEL0_TARGET_LU0_INPUT1C    = 6U,
+    TRGSEL0_TARGET_LU0_INPUT1D    = 7U,
+    TRGSEL0_TARGET_LU0_INPUT2A    = 8U,
+    TRGSEL0_TARGET_LU0_INPUT2B    = 9U,
+    TRGSEL0_TARGET_LU0_INPUT2C    = 10U,
+    TRGSEL0_TARGET_LU0_INPUT2D    = 11U,
+    TRGSEL0_TARGET_LU0_INPUT3A    = 12U,
+    TRGSEL0_TARGET_LU0_INPUT3B    = 13U,
+    TRGSEL0_TARGET_LU0_INPUT3C    = 14U,
+    TRGSEL0_TARGET_LU0_INPUT3D    = 15U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT0 = 16U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT1 = 17U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT2 = 18U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT3 = 19U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT4 = 20U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT5 = 21U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT6 = 22U,
+    TRGSEL0_TARGET_TRGSEL1_INPUT7 = 23U,
+    TRGSEL0_TARGET_FTU0_TRG0      = 24U,
+    TRGSEL0_TARGET_FTU1_TRG0      = 25U,
+    TRGSEL0_TARGET_FTU2_TRG0      = 26U,
+    TRGSEL0_TARGET_FTU3_TRG0      = 27U,
+    TRGSEL0_TARGET_FTU4_TRG0      = 28U,
+    TRGSEL0_TARGET_FTU5_TRG0      = 29U,
+    TRGSEL0_TARGET_FTU6_TRG0      = 30U,
+    TRGSEL0_TARGET_FTU7_TRG0      = 31U,
+    TRGSEL0_TARGET_SENT0_CH0TRG   = 32U,
+    TRGSEL0_TARGET_SENT0_CH1TRG   = 33U,
+    TRGSEL0_TARGET_SENT0_CH2TRG   = 34U,
+    TRGSEL0_TARGET_SENT0_CH3TRG   = 35U,
+    TRGSEL0_TARGET_CMP0_SAMPLE_EN = 36U,
+    TRGSEL0_TARGET_CMP1_SAMPLE_EN = 37U,
+} TrgSel0_TargetType;
+
+/**
+ * @brief TrgSel instance 1 trigger targets
+ *
+ */
+typedef enum
+{
+    TRGSEL1_TARGET_DMA_CH0       = 0U,
+    TRGSEL1_TARGET_DMA_CH1       = 1U,
+    TRGSEL1_TARGET_DMA_CH2       = 2U,
+    TRGSEL1_TARGET_DMA_CH3       = 3U,
+    TRGSEL1_TARGET_TRGSEL_OUT0   = 4U,
+    TRGSEL1_TARGET_TRGSEL_OUT1   = 5U,
+    TRGSEL1_TARGET_TRGSEL_OUT2   = 6U,
+    TRGSEL1_TARGET_TRGSEL_OUT3   = 7U,
+    TRGSEL1_TARGET_TRGSEL_OUT4   = 8U,
+    TRGSEL1_TARGET_TRGSEL_OUT5   = 9U,
+    TRGSEL1_TARGET_TRGSEL_OUT6   = 10U,
+    TRGSEL1_TARGET_TRGSEL_OUT7   = 11U,
+    TRGSEL1_TARGET_FCUART0_TRGI  = 12U,
+    TRGSEL1_TARGET_FCUART1_TRGI  = 13U,
+    TRGSEL1_TARGET_FCUART2_TRGI  = 14U,
+    TRGSEL1_TARGET_FCUART3_TRGI  = 15U,
+    TRGSEL1_TARGET_FCUART4_TRGI  = 16U,
+    TRGSEL1_TARGET_FCUART5_TRGI  = 17U,
+    TRGSEL1_TARGET_FCUART6_TRGI  = 18U,
+    TRGSEL1_TARGET_FCUART7_TRGI  = 19U,
+    TRGSEL1_TARGET_FCSPI0_TRGI   = 20U,
+    TRGSEL1_TARGET_FCSPI1_TRGI   = 21U,
+    TRGSEL1_TARGET_FCSPI2_TRGI   = 22U,
+    TRGSEL1_TARGET_FCSPI3_TRGI   = 23U,
+    TRGSEL1_TARGET_FCSPI4_TRGI   = 24U,
+    TRGSEL1_TARGET_FCSPI5_TRGI   = 25U,
+    TRGSEL1_TARGET_FCIIC0_TRGI   = 26U,
+    TRGSEL1_TARGET_FCIIC1_TRGI   = 27U
+} TrgSel1_TargetType;
+
+/**
+ * @brief TrgSel instance 2 trigger targets
+ *
+ */
+typedef enum
+{
+    TRGSEL2_TARGET_FTU0_FLT0  = 0U,
+    TRGSEL2_TARGET_FTU0_FLT1  = 1U,
+    TRGSEL2_TARGET_FTU1_FLT0  = 2U,
+    TRGSEL2_TARGET_FTU1_FLT1  = 3U,
+    TRGSEL2_TARGET_FTU2_FLT0  = 4U,
+    TRGSEL2_TARGET_FTU2_FLT1  = 5U,
+    TRGSEL2_TARGET_FTU3_FLT0  = 6U,
+    TRGSEL2_TARGET_FTU3_FLT1  = 7U,
+    TRGSEL2_TARGET_FTU4_FLT0  = 8U,
+    TRGSEL2_TARGET_FTU4_FLT1  = 9U,
+    TRGSEL2_TARGET_FTU5_FLT0  = 10U,
+    TRGSEL2_TARGET_FTU5_FLT1  = 11U,
+    TRGSEL2_TARGET_FTU6_FLT0  = 12U,
+    TRGSEL2_TARGET_FTU6_FLT1  = 13U,
+    TRGSEL2_TARGET_FTU7_FLT0  = 14U,
+    TRGSEL2_TARGET_FTU7_FLT1  = 15U,
+    TRGSEL2_TARGET_FTU0_TRG1  = 16U,
+    TRGSEL2_TARGET_FTU1_TRG1  = 17U,
+    TRGSEL2_TARGET_FTU2_TRG1  = 18U,
+    TRGSEL2_TARGET_FTU3_TRG1  = 19U,
+    TRGSEL2_TARGET_FTU4_TRG1  = 20U,
+    TRGSEL2_TARGET_FTU5_TRG1  = 21U,
+    TRGSEL2_TARGET_FTU6_TRG1  = 22U,
+    TRGSEL2_TARGET_FTU7_TRG1  = 23U,
+    TRGSEL2_TARGET_MSC0_INJ0  = 24U,
+    TRGSEL2_TARGET_MSC0_INJ1  = 25U,
+    TRGSEL2_TARGET_TPU_FLTIN0 = 26U,
+    TRGSEL2_TARGET_TPU_FLTIN1 = 27U,
+    TRGSEL2_TARGET_TPU_FLTIN2 = 28U,
+    TRGSEL2_TARGET_TPU_FLTIN3 = 29U,
+} TrgSel2_TargetType;
+
+/**
+ * @brief TrgSel instance 3 trigger targets
+ *
+ */
+typedef enum
+{
+    TRGSEL3_TARGET_ISM0_MON0  = 0U,
+    TRGSEL3_TARGET_ISM0_MON1  = 1U,
+    TRGSEL3_TARGET_ISM0_MON2  = 2U,
+    TRGSEL3_TARGET_ISM0_MON3  = 3U,
+    TRGSEL3_TARGET_ISM0_MON4  = 4U,
+    TRGSEL3_TARGET_ISM0_MON5  = 5U,
+    TRGSEL3_TARGET_ISM0_MON6  = 6U,
+    TRGSEL3_TARGET_ISM0_MON7  = 7U,
+    TRGSEL3_TARGET_ISM0_REF0  = 8U,
+    TRGSEL3_TARGET_ISM0_REF1  = 9U,
+    TRGSEL3_TARGET_ISM0_REF2  = 10U,
+    TRGSEL3_TARGET_ISM0_REF3  = 11U,
+    TRGSEL3_TARGET_ISM0_REF4  = 12U,
+    TRGSEL3_TARGET_ISM0_REF5  = 13U,
+    TRGSEL3_TARGET_ISM0_REF6  = 14U,
+    TRGSEL3_TARGET_ISM0_REF7  = 15U,
+} TrgSel3_TargetType;
+
+/**
+ * @brief TrgSel instance 4 trigger targets
+ *
+ */
+typedef enum
+{
+    TRGSEL4_TARGET_ADC0_TRG0   = 0U,
+    TRGSEL4_TARGET_ADC0_TRG1   = 1U,
+    TRGSEL4_TARGET_ADC0_TRG2   = 2U,
+    TRGSEL4_TARGET_ADC0_TRG3   = 3U,
+    TRGSEL4_TARGET_ADC1_TRG0   = 4U,
+    TRGSEL4_TARGET_ADC1_TRG1   = 5U,
+    TRGSEL4_TARGET_ADC1_TRG2   = 6U,
+    TRGSEL4_TARGET_ADC1_TRG3   = 7U,
+    TRGSEL4_TARGET_PTIMER0_TRG = 8U,
+	TRGSEL4_TARGET_PTIMER1_TRG = 9U,
+} TrgSel4_TargetType;
+
+/**
+ * @brief TrgSel instance 5 trigger targets
+ *
+ */
+typedef enum
+{
+	 TRGSEL5_TARGET_TPU_INT_CH24    = 0U,
+	 TRGSEL5_TARGET_TPU_INT_CH25    = 1U,
+	 TRGSEL5_TARGET_TPU_INT_CH26    = 2U,
+	 TRGSEL5_TARGET_TPU_INT_CH27    = 3U,
+	 TRGSEL5_TARGET_TPU_INT_CH28    = 4U,
+	 TRGSEL5_TARGET_TPU_INT_CH29    = 5U,
+	 TRGSEL5_TARGET_TPU_INT_CH30    = 6U,
+	 TRGSEL5_TARGET_TPU_INT_CH31    = 7U,
+	 TRGSEL5_TARGET_FCPIT0_TRG_CH0  = 8U,
+	 TRGSEL5_TARGET_FCPIT0_TRG_CH1  = 9U,
+	 TRGSEL5_TARGET_FCPIT0_TRG_CH2  = 10U,
+	 TRGSEL5_TARGET_FCPIT0_TRG_CH3  = 11U,
+	 TRGSEL5_TARGET_AONTIMER0_CLK3  = 12U,
+} TrgSel5_TargetType;
+
+/**
+ * @brief TrgSel instance 0 trigger sources
+ *
+ */
+typedef enum
+{
+    TRGSEL0_SRC_VSS                = 0U,
+    TRGSEL0_SRC_VDD                = 1U,
+    TRGSEL0_SRC_SCM0_SW_TRG0       = 2U,
+    TRGSEL0_SRC_SCM0_SW_TRG1       = 3U,
+    TRGSEL0_SRC_SCM0_SW_TRG2       = 4U,
+    TRGSEL0_SRC_SCM0_SW_TRG3       = 5U,
+    TRGSEL0_SRC_TRGSEL_IN0         = 6U,
+    TRGSEL0_SRC_TRGSEL_IN1         = 7U,
+    TRGSEL0_SRC_TRGSEL_IN2         = 8U,
+    TRGSEL0_SRC_TRGSEL_IN3         = 9U,
+    TRGSEL0_SRC_TRGSEL_IN4         = 10U,
+    TRGSEL0_SRC_TRGSEL_IN5         = 11U,
+    TRGSEL0_SRC_TRGSEL_IN6         = 12U,
+    TRGSEL0_SRC_TRGSEL_IN7         = 13U,
+    TRGSEL0_SRC_TRGSEL_IN8         = 14U,
+    TRGSEL0_SRC_TRGSEL_IN9         = 15U,
+    TRGSEL0_SRC_TRGSEL_IN10        = 16U,
+    TRGSEL0_SRC_TRGSEL_IN11        = 17U,
+    TRGSEL0_SRC_TRGSEL_IN12        = 18U,
+    TRGSEL0_SRC_TRGSEL_IN13        = 19U,
+    TRGSEL0_SRC_TRGSEL_IN14        = 20U,
+    TRGSEL0_SRC_TRGSEL_IN15        = 21U,
+    TRGSEL0_SRC_CMP0_OUT           = 22U,
+    TRGSEL0_SRC_CMP1_OUT           = 23U,
+    TRGSEL0_SRC_FCPIT0_CH0         = 24U,
+    TRGSEL0_SRC_FCPIT0_CH1         = 25U,
+    TRGSEL0_SRC_FCPIT0_CH2         = 26U,
+    TRGSEL0_SRC_FCPIT0_CH3         = 27U,
+    TRGSEL0_SRC_AONTIMER0_TRGO     = 28U,
+    TRGSEL0_SRC_FTU0_RELOAD_TRG    = 29U,
+    TRGSEL0_SRC_FTU0_MATCH_TRG     = 30U,
+    TRGSEL0_SRC_FTU1_RELOAD_TRG    = 31U,
+    TRGSEL0_SRC_FTU1_MATCH_TRG     = 32U,
+    TRGSEL0_SRC_FTU2_RELOAD_TRG    = 33U,
+    TRGSEL0_SRC_FTU2_MATCH_TRG     = 34U,
+    TRGSEL0_SRC_FTU3_RELOAD_TRG    = 35U,
+    TRGSEL0_SRC_FTU3_MATCH_TRG     = 36U,
+    TRGSEL0_SRC_FTU4_RELOAD_TRG    = 37U,
+    TRGSEL0_SRC_FTU4_MATCH_TRG     = 38U,
+    TRGSEL0_SRC_FTU5_RELOAD_TRG    = 39U,
+    TRGSEL0_SRC_FTU5_MATCH_TRG     = 40U,
+    TRGSEL0_SRC_FTU6_RELOAD_TRG    = 41U,
+    TRGSEL0_SRC_FTU6_MATCH_TRG     = 42U,
+    TRGSEL0_SRC_FTU7_RELOAD_TRG    = 43U,
+    TRGSEL0_SRC_FTU7_MATCH_TRG     = 44U,
+    TRGSEL0_SRC_LU0_OUT0A          = 45U,
+    TRGSEL0_SRC_LU0_OUT1A          = 46U,
+    TRGSEL0_SRC_LU0_OUT2A          = 47U,
+    TRGSEL0_SRC_LU0_OUT3A          = 48U,
+    TRGSEL0_SRC_LU0_OUT0B          = 49U,
+    TRGSEL0_SRC_LU0_OUT1B          = 50U,
+    TRGSEL0_SRC_LU0_OUT2B          = 51U,
+    TRGSEL0_SRC_LU0_OUT3B          = 52U,
+    TRGSEL0_SRC_PTIMER0_ADCCH0_TRG = 53U,
+    TRGSEL0_SRC_PTIMER0_PULSE      = 54U,
+    TRGSEL0_SRC_ADC0_EOSG0         = 55U,
+    TRGSEL0_SRC_ADC0_EOSG1         = 56U,
+    TRGSEL0_SRC_ADC0_EOSG2         = 57U,
+    TRGSEL0_SRC_ADC0_EOSG3         = 58U,
+    TRGSEL0_SRC_PTIMER1_ADCCH0_TRG = 59U,
+    TRGSEL0_SRC_PTIMER1_PULSE      = 60U,
+    TRGSEL0_SRC_ADC1_EOSG0         = 61U,
+    TRGSEL0_SRC_ADC1_EOSG1         = 62U,
+    TRGSEL0_SRC_ADC1_EOSG2         = 63U,
+    TRGSEL0_SRC_ADC1_EOSG3         = 64U,
+    TRGSEL0_SRC_RTC_ALARM          = 65U,
+    TRGSEL0_SRC_RTC_SECOND         = 66U,
+    TRGSEL0_SRC_GPIOA_TRG          = 67U,
+    TRGSEL0_SRC_GPIOB_TRG          = 68U,
+    TRGSEL0_SRC_GPIOC_TRG          = 69U,
+    TRGSEL0_SRC_GPIOD_TRG          = 70U,
+    TRGSEL0_SRC_GPIOE_TRG          = 71U,
+    TRGSEL0_SRC_FTU0_CH0_OUT       = 72U,
+    TRGSEL0_SRC_FTU0_CH1_OUT       = 73U,
+    TRGSEL0_SRC_FTU0_CH2_OUT       = 74U,
+    TRGSEL0_SRC_FTU0_CH3_OUT       = 75U,
+    TRGSEL0_SRC_FTU0_CH4_OUT       = 76U,
+    TRGSEL0_SRC_FTU0_CH5_OUT       = 77U,
+    TRGSEL0_SRC_FTU0_CH6_OUT       = 78U,
+    TRGSEL0_SRC_FTU0_CH7_OUT       = 79U,
+    TRGSEL0_SRC_FTU3_CH0_OUT       = 80U,
+    TRGSEL0_SRC_FTU3_CH1_OUT       = 81U,
+    TRGSEL0_SRC_FTU3_CH2_OUT       = 82U,
+    TRGSEL0_SRC_FTU3_CH3_OUT       = 83U,
+    TRGSEL0_SRC_FTU3_CH4_OUT       = 84U,
+    TRGSEL0_SRC_FTU3_CH5_OUT       = 85U,
+    TRGSEL0_SRC_FTU3_CH6_OUT       = 86U,
+    TRGSEL0_SRC_FTU3_CH7_OUT       = 87U,
+    TRGSEL0_SRC_FTU6_CH0_OUT       = 88U,
+    TRGSEL0_SRC_FTU6_CH1_OUT       = 89U,
+    TRGSEL0_SRC_FTU6_CH2_OUT       = 90U,
+    TRGSEL0_SRC_FTU6_CH3_OUT       = 91U,
+    TRGSEL0_SRC_FTU6_CH4_OUT       = 92U,
+    TRGSEL0_SRC_FTU6_CH5_OUT       = 93U,
+    TRGSEL0_SRC_FTU6_CH6_OUT       = 94U,
+    TRGSEL0_SRC_FTU6_CH7_OUT       = 95U,
+    TRGSEL0_SRC_TPU_TRG0           = 96U,
+    TRGSEL0_SRC_TPU_TRG1           = 97U,
+    TRGSEL0_SRC_TPU_TRG2           = 98U,
+    TRGSEL0_SRC_TPU_TRG3           = 99U,
+    TRGSEL0_SRC_TPU_TRG4           = 100U,
+    TRGSEL0_SRC_TPU_TRG5           = 101U,
+    TRGSEL0_SRC_TPU_TRG6           = 102U,
+    TRGSEL0_SRC_TPU_TRG7           = 103U,
+    TRGSEL0_SRC_TPU_TRG8           = 104U,
+    TRGSEL0_SRC_TPU_TRG9           = 105U,
+    TRGSEL0_SRC_TPU_TRG10          = 106U,
+    TRGSEL0_SRC_TPU_TRG11          = 107U,
+    TRGSEL0_SRC_TPU_TRG12          = 108U,
+    TRGSEL0_SRC_TPU_TRG13          = 109U,
+    TRGSEL0_SRC_TPU_TRG14          = 110U,
+    TRGSEL0_SRC_TPU_TRG15          = 111U,
+    TRGSEL0_SRC_TPU_TRG16          = 112U,
+    TRGSEL0_SRC_TPU_TRG17          = 113U,
+    TRGSEL0_SRC_TPU_TRG18          = 114U,
+    TRGSEL0_SRC_TPU_TRG19          = 115U,
+    TRGSEL0_SRC_TPU_TRG20          = 116U,
+    TRGSEL0_SRC_TPU_TRG21          = 117U,
+    TRGSEL0_SRC_TPU_TRG22          = 118U,
+    TRGSEL0_SRC_TPU_TRG23          = 119U,
+    TRGSEL0_SRC_TPU_TRG24          = 120U,
+    TRGSEL0_SRC_TPU_TRG25          = 121U,
+    TRGSEL0_SRC_TPU_TRG26          = 122U,
+    TRGSEL0_SRC_TPU_TRG27          = 123U,
+    TRGSEL0_SRC_TPU_TRG28          = 124U,
+    TRGSEL0_SRC_TPU_TRG29          = 125U,
+    TRGSEL0_SRC_TPU_TRG30          = 126U,
+    TRGSEL0_SRC_TPU_TRG31          = 127U,
+} TrgSel0_SourceType;
+
+/**
+ * @brief TrgSel instance 1 trigger sources
+ *
+ */
+typedef enum
+{
+    TRGSEL1_SRC_VSS              = 0U,
+    TRGSEL1_SRC_VDD              = 1U,
+    TRGSEL1_SRC_SCM0_SW_TRG4     = 2U,
+    TRGSEL1_SRC_SCM0_SW_TRG5     = 3U,
+    TRGSEL1_SRC_SCM0_SW_TRG6     = 4U,
+    TRGSEL1_SRC_SCM0_SW_TRG7     = 5U,
+    TRGSEL1_SRC_TRGSEL_IN0       = 6U,
+    TRGSEL1_SRC_TRGSEL_IN1       = 7U,
+    TRGSEL1_SRC_TRGSEL_IN2       = 8U,
+    TRGSEL1_SRC_TRGSEL_IN3       = 9U,
+    TRGSEL1_SRC_TRGSEL_IN4       = 10U,
+    TRGSEL1_SRC_TRGSEL_IN5       = 11U,
+    TRGSEL1_SRC_TRGSEL_IN6       = 12U,
+    TRGSEL1_SRC_TRGSEL_IN7       = 13U,
+    TRGSEL1_SRC_TRGSEL_IN8       = 14U,
+    TRGSEL1_SRC_TRGSEL_IN9       = 15U,
+    TRGSEL1_SRC_TRGSEL_IN10      = 16U,
+    TRGSEL1_SRC_TRGSEL_IN11      = 17U,
+    TRGSEL1_SRC_TRGSEL_IN12      = 18U,
+    TRGSEL1_SRC_TRGSEL_IN13      = 19U,
+    TRGSEL1_SRC_TRGSEL_IN14      = 20U,
+    TRGSEL1_SRC_TRGSEL_IN15      = 21U,
+    TRGSEL1_SRC_CMP0_OUT         = 22U,
+    TRGSEL1_SRC_CMP1_OUT         = 23U,
+    TRGSEL1_SRC_FCPIT0_CH0       = 24U,
+    TRGSEL1_SRC_FCPIT0_CH1       = 25U,
+    TRGSEL1_SRC_FCPIT0_CH2       = 26U,
+    TRGSEL1_SRC_FCPIT0_CH3       = 27U,
+    TRGSEL1_SRC_AONTIMER0_TRGO   = 28U,
+    TRGSEL1_SRC_LU0_OUT0A        = 29U,
+    TRGSEL1_SRC_LU0_OUT1A        = 30U,
+    TRGSEL1_SRC_LU0_OUT2A        = 31U,
+    TRGSEL1_SRC_LU0_OUT3A        = 32U,
+    TRGSEL1_SRC_LU0_OUT0B        = 33U,
+    TRGSEL1_SRC_LU0_OUT1B        = 34U,
+    TRGSEL1_SRC_LU0_OUT2B        = 35U,
+    TRGSEL1_SRC_LU0_OUT3B        = 36U,
+    TRGSEL1_SRC_RTC_ALARM        = 37U,
+    TRGSEL1_SRC_RTC_SECOND       = 38U,
+    TRGSEL1_SRC_GPIOA_TRG        = 39U,
+    TRGSEL1_SRC_GPIOB_TRG        = 40U,
+    TRGSEL1_SRC_GPIOC_TRG        = 41U,
+    TRGSEL1_SRC_GPIOD_TRG        = 42U,
+    TRGSEL1_SRC_GPIOE_TRG        = 43U,
+    TRGSEL1_SRC_TRGSEL1_INPUT0   = 44U,
+    TRGSEL1_SRC_TRGSEL1_INPUT1   = 45U,
+    TRGSEL1_SRC_TRGSEL1_INPUT2   = 46U,
+    TRGSEL1_SRC_TRGSEL1_INPUT3   = 47U,
+    TRGSEL1_SRC_TRGSEL1_INPUT4   = 48U,
+    TRGSEL1_SRC_TRGSEL1_INPUT5   = 49U,
+    TRGSEL1_SRC_TRGSEL1_INPUT6   = 50U,
+    TRGSEL1_SRC_TRGSEL1_INPUT7   = 51U,
+    TRGSEL1_SRC_FCIIC0_MTRG      = 52U,
+    TRGSEL1_SRC_FCIIC0_STRG      = 53U,
+    TRGSEL1_SRC_FCIIC1_MTRG      = 54U,
+    TRGSEL1_SRC_FCIIC1_STRG      = 55U,
+    TRGSEL1_SRC_FCSPI0_FRAME     = 56U,
+    TRGSEL1_SRC_FCSPI0_RX_DONE   = 57U,
+    TRGSEL1_SRC_FCSPI1_FRAME     = 58U,
+    TRGSEL1_SRC_FCSPI1_RX_DONE   = 59U,
+    TRGSEL1_SRC_FCSPI2_FRAME     = 60U,
+    TRGSEL1_SRC_FCSPI2_RX_DONE   = 61U,
+    TRGSEL1_SRC_FCSPI3_FRAME     = 62U,
+    TRGSEL1_SRC_FCSPI3_RX_DONE   = 63U,
+    TRGSEL1_SRC_FCSPI4_FRAME     = 64U,
+    TRGSEL1_SRC_FCSPI4_RX_DONE   = 65U,
+    TRGSEL1_SRC_FCSPI5_FRAME     = 66U,
+    TRGSEL1_SRC_FCSPI5_RX_DONE   = 67U,
+    TRGSEL1_SRC_FCUART0_RX_DONE  = 68U,
+    TRGSEL1_SRC_FCUART0_TX_DONE  = 69U,
+    TRGSEL1_SRC_FCUART0_RX_IDLE  = 70U,
+    TRGSEL1_SRC_FCUART1_RX_DONE  = 71U,
+    TRGSEL1_SRC_FCUART1_TX_DONE  = 72U,
+    TRGSEL1_SRC_FCUART1_RX_IDLE  = 73U,
+    TRGSEL1_SRC_FCUART2_RX_DONE  = 74U,
+    TRGSEL1_SRC_FCUART2_TX_DONE  = 75U,
+    TRGSEL1_SRC_FCUART2_RX_IDLE  = 76U,
+    TRGSEL1_SRC_FCUART3_RX_DONE  = 77U,
+    TRGSEL1_SRC_FCUART3_TX_DONE  = 78U,
+    TRGSEL1_SRC_FCUART3_RX_IDLE  = 79U,
+    TRGSEL1_SRC_FCUART4_RX_DONE  = 80U,
+    TRGSEL1_SRC_FCUART4_TX_DONE  = 81U,
+    TRGSEL1_SRC_FCUART4_RX_IDLE  = 82U,
+    TRGSEL1_SRC_FCUART5_RX_DONE  = 83U,
+    TRGSEL1_SRC_FCUART5_TX_DONE  = 84U,
+    TRGSEL1_SRC_FCUART5_RX_IDLE  = 85U,
+    TRGSEL1_SRC_FCUART6_RX_DONE  = 86U,
+    TRGSEL1_SRC_FCUART6_TX_DONE  = 87U,
+    TRGSEL1_SRC_FCUART6_RX_IDLE  = 88U,
+    TRGSEL1_SRC_FCUART7_RX_DONE  = 89U,
+    TRGSEL1_SRC_FCUART7_TX_DONE  = 90U,
+    TRGSEL1_SRC_FCUART7_RX_IDLE  = 91U,
+	TRGSEL1_SRC_ADC0_CMP         = 92U,
+	TRGSEL1_SRC_ADC1_CMP         = 93U
+} TrgSel1_SourceType;
+
+/**
+ * @brief TrgSel instance 2 trigger sources
+ *
+ */
+typedef enum
+{
+    TRGSEL2_SRC_VSS         = 0U,
+    TRGSEL2_SRC_VDD         = 1U,
+    TRGSEL2_SRC_TRGSEL_OUT0 = 2U,
+    TRGSEL2_SRC_TRGSEL_OUT1 = 3U,
+    TRGSEL2_SRC_TRGSEL_OUT2 = 4U,
+    TRGSEL2_SRC_TRGSEL_OUT3 = 5U,
+    TRGSEL2_SRC_TRGSEL_OUT4 = 6U,
+    TRGSEL2_SRC_TRGSEL_OUT5 = 7U,
+    TRGSEL2_SRC_TRGSEL_OUT6 = 8U,
+    TRGSEL2_SRC_TRGSEL_OUT7 = 9U,
+    TRGSEL2_SRC_FTU_FLT0    = 10U,
+    TRGSEL2_SRC_FTU_FLT1    = 11U,
+    TRGSEL2_SRC_FTU_FLT2    = 12U,
+    TRGSEL2_SRC_FTU_FLT3    = 13U,
+    TRGSEL2_SRC_FTU_FLT4    = 14U,
+    TRGSEL2_SRC_FTU_FLT5    = 15U,
+    TRGSEL2_SRC_FTU_FLT6    = 16U,
+    TRGSEL2_SRC_FTU_FLT7    = 17U,
+    TRGSEL2_SRC_FTU_FLT8    = 18U,
+    TRGSEL2_SRC_FTU_FLT9    = 19U,
+    TRGSEL2_SRC_FTU_FLT10   = 20U,
+    TRGSEL2_SRC_FTU_FLT11   = 21U,
+    TRGSEL2_SRC_FTU_FLT12   = 22U,
+    TRGSEL2_SRC_FTU_FLT13   = 23U,
+    TRGSEL2_SRC_FTU_FLT14   = 24U,
+    TRGSEL2_SRC_FTU_FLT15   = 25U,
+    TRGSEL2_SRC_FTU_FLT16   = 26U,
+    TRGSEL2_SRC_FTU_FLT17   = 27U,
+    TRGSEL2_SRC_FTU_FLT18   = 28U,
+    TRGSEL2_SRC_FTU_FLT19   = 29U,
+    TRGSEL2_SRC_FTU_FLT20   = 30U,
+    TRGSEL2_SRC_FTU_FLT21   = 31U
+} TrgSel2_SourceType;
+
+/**
+ * @brief TrgSel instance 3 trigger sources
+ *
+ */
+typedef enum
+{
+    TRGSEL3_SRC_VSS            = 0U,
+    TRGSEL3_SRC_VDD            = 1U,
+    TRGSEL3_SRC_TRGSEL_OUT0    = 2U,
+    TRGSEL3_SRC_TRGSEL_OUT1    = 3U,
+    TRGSEL3_SRC_TRGSEL_OUT2    = 4U,
+    TRGSEL3_SRC_TRGSEL_OUT3    = 5U,
+    TRGSEL3_SRC_TRGSEL_OUT4    = 6U,
+    TRGSEL3_SRC_TRGSEL_OUT5    = 7U,
+    TRGSEL3_SRC_TRGSEL_OUT6    = 8U,
+    TRGSEL3_SRC_TRGSEL_OUT7    = 9U,
+    TRGSEL3_SRC_TRGSEL1_INPUT0 = 10U,
+    TRGSEL3_SRC_TRGSEL1_INPUT1 = 11U,
+    TRGSEL3_SRC_TRGSEL1_INPUT2 = 12U,
+    TRGSEL3_SRC_TRGSEL1_INPUT3 = 13U,
+    TRGSEL3_SRC_TRGSEL1_INPUT4 = 14U,
+    TRGSEL3_SRC_TRGSEL1_INPUT5 = 15U,
+    TRGSEL3_SRC_TRGSEL1_INPUT6 = 16U,
+    TRGSEL3_SRC_TRGSEL1_INPUT7 = 17U,
+    TRGSEL3_SRC_LU0_OUT0A      = 18U,
+    TRGSEL3_SRC_LU1_OUT0A      = 19U,
+    TRGSEL3_SRC_LU2_OUT0A      = 20U,
+    TRGSEL3_SRC_LU3_OUT0A      = 21U,
+    TRGSEL3_SRC_FTU_IN0        = 22U,
+    TRGSEL3_SRC_FTU_IN1        = 23U,
+    TRGSEL3_SRC_FTU_IN2        = 24U,
+    TRGSEL3_SRC_FTU_IN3        = 25U,
+    TRGSEL3_SRC_FTU_IN4        = 26U,
+    TRGSEL3_SRC_FTU_IN5        = 27U,
+    TRGSEL3_SRC_FTU_IN6        = 28U,
+    TRGSEL3_SRC_FTU_IN7        = 29U,
+    TRGSEL3_SRC_FTU_IN8        = 30U,
+    TRGSEL3_SRC_FTU_IN9        = 31U,
+    TRGSEL3_SRC_FTU_IN10       = 32U,
+    TRGSEL3_SRC_FTU_IN11       = 33U,
+    TRGSEL3_SRC_FTU_IN12       = 34U,
+    TRGSEL3_SRC_FTU_IN13       = 35U,
+    TRGSEL3_SRC_FTU_IN14       = 36U,
+    TRGSEL3_SRC_FTU_IN15       = 37U,
+    TRGSEL3_SRC_FTU_OUT0       = 38U,
+    TRGSEL3_SRC_FTU_OUT1       = 39U,
+    TRGSEL3_SRC_FTU_OUT2       = 40U,
+    TRGSEL3_SRC_FTU_OUT3       = 41U,
+    TRGSEL3_SRC_FTU_OUT4       = 42U,
+    TRGSEL3_SRC_FTU_OUT5       = 43U,
+    TRGSEL3_SRC_FTU_OUT6       = 44U,
+    TRGSEL3_SRC_FTU_OUT7       = 45U,
+    TRGSEL3_SRC_FTU_OUT8       = 46U,
+    TRGSEL3_SRC_FTU_OUT9       = 47U,
+    TRGSEL3_SRC_FTU_OUT10      = 48U,
+    TRGSEL3_SRC_FTU_OUT11      = 49U,
+    TRGSEL3_SRC_FTU_OUT12      = 50U,
+    TRGSEL3_SRC_FTU_OUT13      = 51U,
+    TRGSEL3_SRC_FTU_OUT14      = 52U,
+    TRGSEL3_SRC_FTU_OUT15      = 53U,
+    TRGSEL3_SRC_TPU_CH0         = 54U,
+    TRGSEL3_SRC_TPU_CH1         = 55U,
+    TRGSEL3_SRC_TPU_CH2         = 56U,
+    TRGSEL3_SRC_TPU_CH3         = 57U,
+    TRGSEL3_SRC_TPU_CH4         = 58U,
+    TRGSEL3_SRC_TPU_CH5         = 59U,
+    TRGSEL3_SRC_TPU_CH6         = 60U,
+    TRGSEL3_SRC_TPU_CH7         = 61U,
+
+} TrgSel3_SourceType;
+
+/**
+ * @brief TrgSel instance 4 trigger sources
+ *
+ */
+typedef enum
+{
+    TRGSEL4_SRC_VSS                = 0U,
+    TRGSEL4_SRC_VDD                = 1U,
+    TRGSEL4_SRC_SCM0_SW_TRG0       = 2U,
+    TRGSEL4_SRC_SCM0_SW_TRG1       = 3U,
+    TRGSEL4_SRC_SCM0_SW_TRG2       = 4U,
+    TRGSEL4_SRC_SCM0_SW_TRG3       = 5U,
+    TRGSEL4_SRC_TRGSEL_IN8         = 6U,
+    TRGSEL4_SRC_TRGSEL_IN9         = 7U,
+    TRGSEL4_SRC_TRGSEL_IN10        = 8U,
+    TRGSEL4_SRC_TRGSEL_IN11        = 9U,
+    TRGSEL4_SRC_TRGSEL_IN12        = 10U,
+    TRGSEL4_SRC_TRGSEL_IN13        = 11U,
+    TRGSEL4_SRC_TRGSEL_IN14        = 12U,
+    TRGSEL4_SRC_TRGSEL_IN15        = 13U,
+    TRGSEL4_SRC_LU0_OUT0A          = 14U,
+    TRGSEL4_SRC_LU0_OUT1A          = 15U,
+    TRGSEL4_SRC_LU0_OUT2A          = 16U,
+    TRGSEL4_SRC_LU0_OUT3A          = 17U,
+    TRGSEL4_SRC_LU0_OUT0B          = 18U,
+    TRGSEL4_SRC_LU0_OUT1B          = 19U,
+    TRGSEL4_SRC_LU0_OUT2B          = 20U,
+    TRGSEL4_SRC_LU0_OUT3B          = 21U,
+    TRGSEL4_SRC_FCPIT0_CH0         = 22U,
+    TRGSEL4_SRC_FCPIT0_CH1         = 23U,
+    TRGSEL4_SRC_FCPIT0_CH2         = 24U,
+    TRGSEL4_SRC_FCPIT0_CH3         = 25U,
+    TRGSEL4_SRC_TRGSEL1_INPUT0     = 26U,
+    TRGSEL4_SRC_TRGSEL1_INPUT1     = 27U,
+    TRGSEL4_SRC_TRGSEL1_INPUT2     = 28U,
+    TRGSEL4_SRC_TRGSEL1_INPUT3     = 29U,
+    TRGSEL4_SRC_TRGSEL1_INPUT4     = 30U,
+    TRGSEL4_SRC_TRGSEL1_INPUT5     = 31U,
+    TRGSEL4_SRC_TRGSEL1_INPUT6     = 32U,
+    TRGSEL4_SRC_TRGSEL1_INPUT7     = 33U,
+    TRGSEL4_SRC_FTU0_RELOAD_TRG    = 34U,
+    TRGSEL4_SRC_FTU0_MATCH_TRG     = 35U,
+    TRGSEL4_SRC_FTU1_RELOAD_TRG    = 36U,
+    TRGSEL4_SRC_FTU1_MATCH_TRG     = 37U,
+    TRGSEL4_SRC_FTU2_RELOAD_TRG    = 38U,
+    TRGSEL4_SRC_FTU2_MATCH_TRG     = 39U,
+    TRGSEL4_SRC_FTU3_RELOAD_TRG    = 40U,
+    TRGSEL4_SRC_FTU3_MATCH_TRG     = 41U,
+    TRGSEL4_SRC_FTU4_RELOAD_TRG    = 42U,
+    TRGSEL4_SRC_FTU4_MATCH_TRG     = 43U,
+    TRGSEL4_SRC_FTU5_RELOAD_TRG    = 44U,
+    TRGSEL4_SRC_FTU5_MATCH_TRG     = 45U,
+    TRGSEL4_SRC_FTU6_RELOAD_TRG    = 46U,
+    TRGSEL4_SRC_FTU6_MATCH_TRG     = 47U,
+    TRGSEL4_SRC_FTU7_RELOAD_TRG    = 48U,
+    TRGSEL4_SRC_FTU7_MATCH_TRG     = 49U,
+    TRGSEL4_SRC_FTU0_CH0_OUT       = 50U,
+    TRGSEL4_SRC_FTU0_CH1_OUT       = 51U,
+    TRGSEL4_SRC_FTU0_CH2_OUT       = 52U,
+    TRGSEL4_SRC_FTU0_CH3_OUT       = 53U,
+    TRGSEL4_SRC_FTU0_CH4_OUT       = 54U,
+    TRGSEL4_SRC_FTU0_CH5_OUT       = 55U,
+    TRGSEL4_SRC_FTU0_CH6_OUT       = 56U,
+    TRGSEL4_SRC_FTU0_CH7_OUT       = 57U,
+    TRGSEL4_SRC_FTU3_CH0_OUT       = 58U,
+    TRGSEL4_SRC_FTU3_CH1_OUT       = 59U,
+    TRGSEL4_SRC_FTU3_CH2_OUT       = 60U,
+    TRGSEL4_SRC_FTU3_CH3_OUT       = 61U,
+    TRGSEL4_SRC_FTU3_CH4_OUT       = 62U,
+    TRGSEL4_SRC_FTU3_CH5_OUT       = 63U,
+    TRGSEL4_SRC_FTU3_CH6_OUT       = 64U,
+    TRGSEL4_SRC_FTU3_CH7_OUT       = 65U,
+    TRGSEL4_SRC_PTIMER0_ADCCH0_TRG = 66U,
+    TRGSEL4_SRC_PTIMER0_PULSE      = 67U,
+    TRGSEL4_SRC_ADC0_EOSG0         = 68U,
+    TRGSEL4_SRC_ADC0_EOSG1         = 69U,
+    TRGSEL4_SRC_ADC0_EOSG2         = 70U,
+    TRGSEL4_SRC_ADC0_EOSG3         = 71U,
+    TRGSEL4_SRC_PTIMER1_ADCCH0_TRG = 72U,
+    TRGSEL4_SRC_PTIMER1_PULSE      = 73U,
+    TRGSEL4_SRC_ADC1_EOSG0         = 74U,
+    TRGSEL4_SRC_ADC1_EOSG1         = 75U,
+    TRGSEL4_SRC_ADC1_EOSG2         = 76U,
+    TRGSEL4_SRC_ADC1_EOSG3         = 77U,
+	TRGSEL4_SRC_CMP0_OUT           = 78U,
+	TRGSEL4_SRC_CMP1_OUT           = 79U,
+    TRGSEL4_SRC_TPU_TRG0           = 80U,
+    TRGSEL4_SRC_TPU_TRG1           = 81U,
+    TRGSEL4_SRC_TPU_TRG2           = 82U,
+    TRGSEL4_SRC_TPU_TRG3           = 83U,
+    TRGSEL4_SRC_TPU_TRG4           = 84U,
+    TRGSEL4_SRC_TPU_TRG5           = 85U,
+    TRGSEL4_SRC_TPU_TRG6           = 86U,
+    TRGSEL4_SRC_TPU_TRG7           = 87U,
+    TRGSEL4_SRC_TPU_TRG8           = 88U,
+    TRGSEL4_SRC_TPU_TRG9           = 89U,
+    TRGSEL4_SRC_TPU_TRG10          = 90U,
+    TRGSEL4_SRC_TPU_TRG11          = 91U,
+    TRGSEL4_SRC_TPU_TRG12          = 92U,
+    TRGSEL4_SRC_TPU_TRG13          = 93U,
+    TRGSEL4_SRC_TPU_TRG14          = 94U,
+    TRGSEL4_SRC_TPU_TRG15          = 95U,
+    TRGSEL4_SRC_TPU_TRG16          = 96U,
+    TRGSEL4_SRC_TPU_TRG17          = 97U,
+    TRGSEL4_SRC_TPU_TRG18          = 98U,
+    TRGSEL4_SRC_TPU_TRG19          = 99U,
+    TRGSEL4_SRC_TPU_TRG20          = 100U,
+    TRGSEL4_SRC_TPU_TRG21          = 101U,
+    TRGSEL4_SRC_TPU_TRG22          = 102U,
+    TRGSEL4_SRC_TPU_TRG23          = 103U,
+    TRGSEL4_SRC_TPU_TRG24          = 104U,
+    TRGSEL4_SRC_TPU_TRG25          = 105U,
+    TRGSEL4_SRC_TPU_TRG26          = 106U,
+    TRGSEL4_SRC_TPU_TRG27          = 107U,
+    TRGSEL4_SRC_TPU_TRG28          = 108U,
+    TRGSEL4_SRC_TPU_TRG29          = 109U,
+    TRGSEL4_SRC_TPU_TRG30          = 110U,
+    TRGSEL4_SRC_TPU_TRG31          = 111U
+} TrgSel4_SourceType;
+
+/**
+ * @brief TrgSel instance 5 trigger sources
+ *
+ */
+typedef enum
+{
+	TRGSEL5_SRC_VSS              = 0U,
+	TRGSEL5_SRC_VDD              = 1U,
+	TRGSEL5_SRC_SCM0_SW_TRG4     = 2U,
+	TRGSEL5_SRC_SCM0_SW_TRG5     = 3U,
+	TRGSEL5_SRC_SCM0_SW_TRG6     = 4U,
+	TRGSEL5_SRC_SCM0_SW_TRG7     = 5U,
+	TRGSEL5_SRC_TRGSEL_IN8       = 6U,
+	TRGSEL5_SRC_TRGSEL_IN9       = 7U,
+	TRGSEL5_SRC_TRGSEL_IN10      = 8U,
+	TRGSEL5_SRC_TRGSEL_IN11      = 9U,
+	TRGSEL5_SRC_TRGSEL_IN12      = 10U,
+	TRGSEL5_SRC_TRGSEL_IN13      = 11U,
+	TRGSEL5_SRC_ADC0_CMP         = 12U,
+	TRGSEL5_SRC_ADC1_CMP         = 13U,
+	TRGSEL5_SRC_CMP0_OUT         = 14U,
+	TRGSEL5_SRC_CMP1_OUT         = 15U,
+	TRGSEL5_SRC_FTU0_RELOAD_TRG  = 16U,
+	TRGSEL5_SRC_FTU0_MATCH_TRG   = 17U,
+	TRGSEL5_SRC_FTU1_RELOAD_TRG  = 18U,
+	TRGSEL5_SRC_FTU1_MATCH_TRG   = 19U,
+	TRGSEL5_SRC_FTU2_RELOAD_TRG  = 20U,
+	TRGSEL5_SRC_FTU2_MATCH_TRG   = 21U,
+	TRGSEL5_SRC_FTU3_RELOAD_TRG  = 22U,
+	TRGSEL5_SRC_FTU3_MATCH_TRG   = 23U,
+	TRGSEL5_SRC_FTU4_RELOAD_TRG  = 24U,
+	TRGSEL5_SRC_FTU4_MATCH_TRG   = 25U,
+	TRGSEL5_SRC_FTU5_RELOAD_TRG  = 26U,
+	TRGSEL5_SRC_FTU5_MATCH_TRG   = 27U,
+	TRGSEL5_SRC_FTU6_RELOAD_TRG  = 28U,
+	TRGSEL5_SRC_FTU6_MATCH_TRG   = 29U,
+	TRGSEL5_SRC_FTU7_RELOAD_TRG  = 30U,
+	TRGSEL5_SRC_FTU7_MATCH_TRG   = 31U,
+	TRGSEL5_SRC_LU0_OUT0A        = 32U,
+	TRGSEL5_SRC_LU0_OUT1A        = 33U,
+	TRGSEL5_SRC_LU0_OUT2A        = 34U,
+	TRGSEL5_SRC_LU0_OUT3A        = 35U,
+	TRGSEL5_SRC_LU0_OUT0B        = 36U,
+	TRGSEL5_SRC_LU0_OUT1B        = 37U,
+	TRGSEL5_SRC_LU0_OUT2B        = 38U,
+	TRGSEL5_SRC_LU0_OUT3B        = 39U,
+    TRGSEL5_SRC_ADC0_EOSG0       = 40U,
+    TRGSEL5_SRC_ADC0_EOSG1       = 41U,
+    TRGSEL5_SRC_ADC0_EOSG2       = 42U,
+    TRGSEL5_SRC_ADC0_EOSG3       = 43U,
+    TRGSEL5_SRC_ADC1_EOSG0       = 44U,
+    TRGSEL5_SRC_ADC1_EOSG1       = 45U,
+    TRGSEL5_SRC_ADC1_EOSG2       = 46U,
+    TRGSEL5_SRC_ADC1_EOSG3       = 47U,
+	TRGSEL5_SRC_FTU0_CH0_OUT     = 48U,
+	TRGSEL5_SRC_FTU0_CH1_OUT     = 49U,
+	TRGSEL5_SRC_FTU0_CH2_OUT     = 50U,
+	TRGSEL5_SRC_FTU0_CH3_OUT     = 51U,
+	TRGSEL5_SRC_FTU0_CH4_OUT     = 52U,
+	TRGSEL5_SRC_FTU0_CH5_OUT     = 53U,
+	TRGSEL5_SRC_FTU0_CH6_OUT     = 54U,
+	TRGSEL5_SRC_FTU0_CH7_OUT     = 55U,
+	TRGSEL5_SRC_TRGSEL1_INPUT0   = 56U,
+	TRGSEL5_SRC_TRGSEL1_INPUT1   = 57U,
+	TRGSEL5_SRC_TRGSEL1_INPUT2   = 58U,
+	TRGSEL5_SRC_TRGSEL1_INPUT3   = 59U,
+	TRGSEL5_SRC_TRGSEL1_INPUT4   = 60U,
+	TRGSEL5_SRC_TRGSEL1_INPUT5   = 61U,
+	TRGSEL5_SRC_TRGSEL1_INPUT6   = 62U,
+	TRGSEL5_SRC_TRGSEL1_INPUT7   = 63U,
+} TrgSel5_SourceType;
+
+/**
+ * @brief Software trigger channels for SMISC software trigger channel 0~7
+ *
+ */
+typedef enum
+{
+    TRGSEL_SW_TRIGGER_CHANNEL_0  = 0U,
+    TRGSEL_SW_TRIGGER_CHANNEL_1  = 1U,
+    TRGSEL_SW_TRIGGER_CHANNEL_2  = 2U,
+    TRGSEL_SW_TRIGGER_CHANNEL_3  = 3U,
+    TRGSEL_SW_TRIGGER_CHANNEL_4  = 4U,
+    TRGSEL_SW_TRIGGER_CHANNEL_5  = 5U,
+    TRGSEL_SW_TRIGGER_CHANNEL_6  = 6U,
+    TRGSEL_SW_TRIGGER_CHANNEL_7  = 7U
+} TRGSEL_SwTriggerChannelType;
+
+/**
+ * @brief Get the trigger source of the selected trigger eTarget
+ *
+ * @param eInstance the TrgSel instance to which the trigger target belongs
+ * @param eTarget the trigger target to get the trigger source
+ * @return TRGSEL_SourceType the trigger source of the selected trigger target
+ */
+TRGSEL_SourceType TRGSEL_GetTargetTriggerSource(const TRGSEL_InstanceType eInstance, const TRGSEL_TargetType eTarget);
+
+/**
+ * @brief Set the trigger source of the selected trigger target
+ *
+ * @param eInstance the TrgSel instance to which the trigger target belongs
+ * @param eTarget the trigger target to set the trigger source
+ * @param eSource the selected trigger source to trig the target
+ */
+void TRGSEL_SetTargetTriggerSource(const TRGSEL_InstanceType eInstance, const TRGSEL_TargetType eTarget,
+                                   const TRGSEL_SourceType eSource);
+
+/**
+ * @brief Get wether the trigger source of the selected target is locked
+ *
+ * @param eInstance the TrgSel instance to which the trigger target belongs
+ * @param eTarget the trigger target to get the lock status
+ * @return true the trigger source of the selected target cannot be modified
+ * @return false the trigger source of the selected target can be modified
+ */
+bool TRGSEL_GetTargetLockStatus(const TRGSEL_InstanceType eInstance, const TRGSEL_TargetType eTarget);
+
+/**
+ * @brief Lock the trigger source of the selected target
+ *
+ * @note The trigger target is grouped by four, so if you lock the trigger source of one target, the
+ * adjacent three trigger targets in the same register group are also be locked. So please ensure the
+ * trigger sources are not to be modified before lock the trigger target.
+ *
+ * @param eInstance the TrgSel instance to which the trigger target belongs
+ * @param eTarget the trigger target to lock the trigger source
+ */
+void TRGSEL_LockTargetTriggerSource(const TRGSEL_InstanceType eInstance, const TRGSEL_TargetType eTarget);
+
+/**
+ * @brief Generate trigger signal for the selected software trigger source channel
+ *
+ * @param eChannel the selected software trigger source channel
+ */
+void TRGSEL_GenerateSwTrigger(const TRGSEL_SwTriggerChannelType eChannel);
+
+/** @}*/ /* fc7xxx_driver_trgsel */
+#if defined(__cplusplus)
+}
+#endif
+#endif
