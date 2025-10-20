@@ -143,7 +143,7 @@ static void BSP_CAN_LL_Init(uint8_t u8CanIndex)
         tRetVal = FLEXCAN_Start(u8CanIndex); /* Start CAN */
         IntMgr_SetPriority(FlexCAN0_IRQn, 3U);
         IntMgr_EnableInterrupt(FlexCAN0_IRQn);
-        if (tRetVal == FLEXCAN_ERROR_OK) FCUART_Printf(2, "Start CAN%d\n", u8CanIndex);
+        if (tRetVal == FLEXCAN_ERROR_OK) FCUART_Printf(2, "CAN%d's started!\n", u8CanIndex);
     }
 }
 
